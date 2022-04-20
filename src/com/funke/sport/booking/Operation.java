@@ -8,8 +8,8 @@ public class Operation {
     public static List<Weekend> timeTable = new ArrayList<>();
     public static List<Student> studentList = new ArrayList<>();
 
-    String saturday = "SATURDAY";
-    String sunday = "SUNDAY";
+    static final String saturday = "SATURDAY";
+    static final String sunday = "SUNDAY";
 
     public Operation() {
         createLessons();
