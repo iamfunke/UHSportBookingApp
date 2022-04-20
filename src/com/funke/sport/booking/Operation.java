@@ -15,6 +15,9 @@ public class Operation {
 
     static final String [] lessonNames = {"YOGA","ZUMBA","AQUACISE","BOX FIT","BODY BLITZ","DANCE"};
 
+    static final String [] studentNames = {"FUNKE","VICTORIA","AKINTOMIWA","MAYOWA","DANIELS",
+            "LONIMI","SAMUEL","GOLD","PAUL","JBOSS"};
+
     public Operation() {
         createLessons();
         createTimeTable();
@@ -67,28 +70,11 @@ public class Operation {
     }
 
     public void registerStudents() {
+        List<Student> automatedList = IntStream.rangeClosed(0,9)
+                .mapToObj(i->new Student(studentNames[i], new ArrayList<>(), new ArrayList<>()))
+                .collect(Collectors.toList());
 
-        Student one = new Student("YUSUF", new ArrayList<>(), new ArrayList<>());
-        Student two = new Student("JOHN", new ArrayList<>(), new ArrayList<>());
-        Student three = new Student("STEVEN", new ArrayList<>(), new ArrayList<>());
-        Student four = new Student("MARY", new ArrayList<>(), new ArrayList<>());
-        Student five = new Student("KHALID", new ArrayList<>(), new ArrayList<>());
-        Student six = new Student("JULIET", new ArrayList<>(), new ArrayList<>());
-        Student seven = new Student("ABRAHAM", new ArrayList<>(), new ArrayList<>());
-        Student eight = new Student("FATIMA", new ArrayList<>(), new ArrayList<>());
-        Student nine = new Student("ADAM", new ArrayList<>(), new ArrayList<>());
-        Student ten = new Student("LOVE", new ArrayList<>(), new ArrayList<>());
-
-        studentList.add(one);
-        studentList.add(two);
-        studentList.add(three);
-        studentList.add(four);
-        studentList.add(five);
-        studentList.add(six);
-        studentList.add(seven);
-        studentList.add(eight);
-        studentList.add(nine);
-        studentList.add(ten);
+        studentList.addAll(automatedList);
     }
 
     public void showMenu(){
