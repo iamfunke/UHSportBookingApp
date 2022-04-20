@@ -7,8 +7,7 @@ public class Session {
     private String evening;
 
 
-    public Session() {
-    }
+    public Session() {}
 
     public String getMorning() {
         return morning;
