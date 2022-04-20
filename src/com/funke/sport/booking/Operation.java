@@ -18,6 +18,8 @@ public class Operation {
     static final String [] studentNames = {"FUNKE","VICTORIA","AKINTOMIWA","MAYOWA","DANIELS",
             "LONIMI","SAMUEL","GOLD","PAUL","JBOSS"};
 
+    private static int [] lessonPrice = {100, 200, 150, 300, 250, 50};
+
     public Operation() {
         createLessons();
         createTimeTable();
@@ -27,7 +29,7 @@ public class Operation {
 
     public void createLessons(){
         List<Lesson> automatedList = IntStream.rangeClosed(0,5)
-                .mapToObj(i->new Lesson(lessonNames[i], 100, new ArrayList<>(), new ArrayList<>(), 0, 0))
+                .mapToObj(i->new Lesson(lessonNames[i], lessonPrice[i], new ArrayList<>(), new ArrayList<>(), 0, 0))
                 .collect(Collectors.toList());
 
         lessonList.addAll(automatedList);
