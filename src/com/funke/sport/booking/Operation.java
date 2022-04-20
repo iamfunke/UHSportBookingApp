@@ -1,6 +1,8 @@
 package com.funke.sport.booking;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Operation {
 
@@ -11,6 +13,8 @@ public class Operation {
     static final String saturday = "SATURDAY";
     static final String sunday = "SUNDAY";
 
+    static final String [] lessonNames = {"YOGA","ZUMBA","AQUACISE","BOX FIT","BODY BLITZ","DANCE"};
+
     public Operation() {
         createLessons();
         createTimeTable();
@@ -19,19 +23,11 @@ public class Operation {
     }
 
     public void createLessons(){
-        Lesson one = new Lesson("YOGA", 100, new ArrayList<>(), new ArrayList<>(), 0, 0);
-        Lesson two = new Lesson("ZUMBA", 200, new ArrayList<>(), new ArrayList<>(), 0, 0);
-        Lesson three = new Lesson("AQUACISE", 50, new ArrayList<>(), new ArrayList<>(), 0, 0);
-        Lesson four = new Lesson("BOX FIT", 200, new ArrayList<>(), new ArrayList<>(), 0, 0);
-        Lesson five = new Lesson("BODY BLITZ", 300, new ArrayList<>(), new ArrayList<>(), 0, 0);
-        Lesson six = new Lesson("DANCE", 150, new ArrayList<>(), new ArrayList<>(), 0, 0);
+        List<Lesson> automatedList = IntStream.rangeClosed(0,5)
+                .mapToObj(i->new Lesson(lessonNames[i], 100, new ArrayList<>(), new ArrayList<>(), 0, 0))
+                .collect(Collectors.toList());
 
-        lessonList.add(one);
-        lessonList.add(two);
-        lessonList.add(three);
-        lessonList.add(four);
-        lessonList.add(five);
-        lessonList.add(six);
+        lessonList.addAll(automatedList);
     }
 
     public int getRandomNumber(int min, int max) {
