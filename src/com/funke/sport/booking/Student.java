@@ -179,10 +179,6 @@ public class Student {
         return input.nextInt();
     }
 
-
-
-
-
     public Student(String name, List<String> lessons, List<Schedule> bookings) {
         this.name = name;
         this.lessons = lessons;
