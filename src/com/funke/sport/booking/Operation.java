@@ -5,9 +5,12 @@ import java.util.*;
 public class Operation {
 
     public static List<Lesson> lessonList = new ArrayList<>();
+    public static List<Weekend> timeTable = new ArrayList<>();
 
     public Operation() {
         createLessons();
+        createTimeTable();
+
     }
 
     public void createLessons(){
@@ -24,6 +27,42 @@ public class Operation {
         lessonList.add(four);
         lessonList.add(five);
         lessonList.add(six);
+    }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    public void createTimeTable(){
+        int weeks = 8;
+        while(weeks > 0){
+            List<Lesson> temp = new ArrayList<>();
+            lessonList.forEach(lesson -> temp.add(lesson));
+            Session sat = new Session();
+            Session sun = new Session();
+            Weekend weekend = new Weekend();
+
+            int index = getRandomNumber(0, temp.size());
+
+            sat.setMorning(temp.remove(index).getName());
+            index = getRandomNumber(0, temp.size());
+            sat.setAfternoon(temp.remove(index).getName());
+            index = getRandomNumber(0, temp.size());
+            sat.setEvening(temp.remove(index).getName());
+
+            index = getRandomNumber(0, temp.size());
+            sun.setMorning(temp.remove(index).getName());
+            index = getRandomNumber(0, temp.size());
+            sun.setAfternoon(temp.remove(index).getName());
+            index = getRandomNumber(0, temp.size());
+            sun.setEvening(temp.remove(index).getName());
+
+            weekend.setSessions(sat, sun);
+
+            timeTable.add(weekend);
+
+            weeks--;
+        }
     }
 
 
